@@ -74,6 +74,23 @@ for a window. Check live seat counts the morning you bid.**
 - [ ] Web UI + per-course insight blog
 - [ ] Post-window calibration tracking: predicted vs actual clearing prices
 
+## Data provenance & takedown
+
+The sample datasets in `data/` are transcribed by hand from the **Overall BOSS
+Results** pages that SMU makes available to its students precisely so they can
+bid more intelligently. They contain **aggregated, section-level statistics
+only** — median and minimum successful bids, seat counts, and instructor
+teaching assignments (which SMU already publishes on its class timetables).
+
+They contain **no individual bidder data**: no names, no student IDs, no
+individual bid amounts, no account balances. Contributed datasets must meet the
+same bar — PRs containing any person-level bidding data will be rejected.
+
+Pulse is an independent student project, not affiliated with or endorsed by
+Singapore Management University. If you represent SMU (or are an instructor
+named in a dataset) and would like anything amended or removed, open an issue
+or email the maintainer — we'll act on it promptly, no questions asked.
+
 ## Contributing
 
 Concierge-first: run a real case for a real person, then generalise what the case
