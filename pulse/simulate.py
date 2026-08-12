@@ -45,9 +45,12 @@ def run_matrix(state, weights, demand_scenarios, bid_grid, *,
         out[scen] = {}
         for sect, w in weights.items():
             s = state[sect]
-            out[scen][sect] = simulate_section(
+            res = simulate_section(
                 s.seats_left, total * w, s.median, bid_grid,
                 premium=premium, sigma=sigma, n_sims=n_sims, rng=rng)
+            res["e_rivals"] = total * w
+            res["seats"] = s.seats_left
+            out[scen][sect] = res
     return out
 
 def targeted_rush(state, section, bid_grid, rival_levels=(25, 35, 45), *,

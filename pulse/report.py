@@ -16,11 +16,11 @@ def fmt_matrix(results, bid_grid):
     lines = []
     for scen, secs in results.items():
         lines.append(f"\n--- scenario: {scen} ---")
-        lines.append(f"{'sect':<6}{'P(fill)':<9}{'clr p50':<9}{'p90':<8}{'p99':<8}| " +
+        lines.append(f"{'sect':<6}{'E[riv]':<8}{'seats':<7}{'P(fill)':<9}{'clr p50':<9}{'p90':<8}{'p99':<8}| " +
                      " ".join(f"e${b:>4}" for b in bid_grid))
         for k in sorted(secs):
             r = secs[k]
-            lines.append(f"{k:<6}{r['p_fill']:<9.1%}{r['clr_p50']:<9.2f}{r['clr_p90']:<8.2f}"
+            lines.append(f"{k:<6}{r.get('e_rivals',0):<8.1f}{r.get('seats',''):<7}{r['p_fill']:<9.1%}{r['clr_p50']:<9.2f}{r['clr_p90']:<8.2f}"
                          f"{r['clr_p99']:<8.2f}| " +
                          " ".join(f"{p:>5.0%}" for p in r["p_win"]))
     return "\n".join(lines)
